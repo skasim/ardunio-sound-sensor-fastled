@@ -10,18 +10,33 @@
 * Ohm resistors
 
 ## Schematic
-![arduino sound sensor with FastLED schematic](./schematic-digital.png)
+<img src="./images/schematic-digital.png" width="600">
 
-## Project Design
-The purpose of the Ardunio project is to utilize a sound sensor to detect noise. The sensor has a digital output where HIGH indicates the absence of noise and LOW indicates the presence of noise. The algorithm adds the number of times noise is detected within a sampling window and outputs this number (i.e., each time, the sensor outputs LOW). The algorithm does not detect the noise frequency in terms of MHz, so the frequency in this algorithm refers to the number of times the sensor was triggered within the sampling window. For demonstration purposes, this algorithm is sufficient to trigger interesting light displays on a FastLED strip based on the noisiness of input as evidenced by Ardunio's serial plotter. 
-![ardunio serial plotter digital output](./output-digital.png)  
 
-### Sound Sensor
-The sounds sensor's potentiometer controls the sensor's senitivity to the sound. The potentiometer requires caliberation prior to use. When a sound is detected, the sound sensor's sound detection LED turns on and the sensor outputs LOW. 
+## Sound Sensor
+The sounds sensor's potentiometer controls the sensor's senitivity to the sound. The potentiometer requires caliberation prior to use. 
+### Analog
+A sound sensor can also have analog output, which is continous output that changes with the intensity of sound detected by the sensor. Simply outputting the data received from the input pin results in meaningless data. However, for this project, Arduino's [ardunioFFT](https://www.arduino.cc/reference/en/libraries/arduinofft/) library is used to convert the received input into meaningful data. Specifically, the major peak detected during a sample window of 1000Hz is captured. For sound frequencies greater than 150Hz, the results were within a 5Hz range.
+
+<img src="./images/400hz.png" width="200"><img src="./images/output_400hz.png" width="500">
+<img src="./images/255hz.png" width="200"><img src="./images/output_255hz.png" width="500">
+
+#### FFT
+The FFT algoriithm is considered one of the most important algorithms developed in the last century and has wide ranging uses, including signal processing and sound compression. The FFT takes a sample frequency domain and is then able to approximate the original frequency. 
+
+### Digital
+When a sound is detected, the sound sensor's sound detection LED turns on and the sensor outputs LOW. When no sound is detected, the sound sensor output HIGH indicates the absence of noise. The algorithm adds the number of times noise is detected within a sampling window (i.e., each time, the sensor outputs LOW) and outputs this accumulated number. The algorithm does not detect the noise frequency in terms of Hz, so the frequency in this algorithm refers to the number of times the sensor was triggered within the sampling window. For demonstration purposes, this algorithm is sufficient to trigger interesting light displays on a FastLED strip that reflect the "noisiness" of the input. The chart below demonstrates the algorithm in Arduino's serial plotter, wherein the peaks reflect how many times the sensor was triggered.
+
+<img src="./images/output-digital.png" width="600">
+
+<br>
+
+<img src="./images/sound-sensor.gif" width="300" height="600">
 
 ### FastLED
 Arduino's FastLED library enables the programming of invidiual lights in an LED strip, which allows for interesting visuals such as creating light trails and adjusting brightness based on input.
 
-### Further Research
-This sound sensors digital output can be used for real world applications such as detecting noise to turn electronics on or off, triggering an alarm, or assessing the quietness of an environment. In the future, a sensor with an analog output along with an FFT algorithm will be utilized to detect sound frequency utilizing a range of data.
+
+
+
 
