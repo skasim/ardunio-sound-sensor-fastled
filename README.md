@@ -1,4 +1,4 @@
-# Arduino Sound Sensor with FastLED
+# Arduino Sound Sensor with FFT and FastLED
 Samra Kasim
 
 ## Material
