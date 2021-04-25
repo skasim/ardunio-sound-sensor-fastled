@@ -1,8 +1,8 @@
 #include <FastLED.h>
 /*
  * Samra Kasim
- * Computer Architecture EN605.204
- * Arduino sound detection project with FastLED and sound sensor
+ * Computer Architecture EN605.611.8VL2
+ * Arduino sound detection project with FastLED and sound sensor. The following code utilizes and analog input and FastLED lights to generate a light display
  * April 5, 2021
 */
 FASTLED_USING_NAMESPACE
