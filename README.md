@@ -24,18 +24,16 @@ A sound sensor can also have analog output, which is continuous output that chan
 
 #### FFT
 The FFT algorithm is considered one of the most important algorithms developed in the last century and has wide ranging uses, including signal processing and sound compression. The [FFT takes a tangle of sine waves](https://www.youtube.com/watch?v=zKKGA30bHG0) that are a time domain representation of a signal and converts it to a frequency domain representation. Therefore, FFT can be used to [deconstruct audio waves into different frequencies such as bass and treble or deconstruct earthquake vibrations](https://download.ni.com/evaluation/pxi/Understanding%20FFTs%20and%20Windowing.pdf).
+<img src="./images/square_wave.gif">
+[Gif source](https://en.wikipedia.org/wiki/Fourier_transform#/media/File:Fourier_transform_time_and_frequency_domains_(small).gif)
 
-<img src="./images/square_wave.gif" width="300" height="600">
-
-An app generated square waves of 250Hz and 75 Hz, the sound sensors utilized in this project captured the sound waves. ArduinoFFT library [transformed](./arduino_sketches/fft_approx.ino) the analog input through an FFT algorithm. The following [notebook](./fft_ouptut_analysis.ipynb) analyzed the FFT output. 
+An app generated square waves of 250Hz and 75 Hz, the sound sensors utilized in this project captured the sound waves., an ArduinoFFT library [transformed](./arduino_sketches/fft_approx.ino) the analog input through an FFT algorithm. The following [notebook](./fft_ouptut_analysis.ipynb) analyzed the FFT output. 
 
 ### Digital
 When a sound is detected, the sound sensor's sound detection LED turns on and the sensor outputs LOW. When no sound is detected, the sound sensor output HIGH indicates the absence of noise. The [algorithm](./arduino_sketches/fastled_with_sound_sensor_freq_detection.ino) adds the number of times noise is detected within a sampling window (i.e., each time, the sensor outputs LOW) and outputs this accumulated number. The algorithm does not detect the noise frequency in terms of Hz, so the frequency in this algorithm refers to the number of times the sensor was triggered within the sampling window. For demonstration purposes, this algorithm is sufficient to trigger interesting light displays on a FastLED strip that reflect the "noisiness" of the input. The chart below demonstrates the algorithm in Arduino's serial plotter, wherein the peaks reflect how many times the sensor was triggered.
 
 <img src="./images/output-digital.png" width="600">
-
 <br>
-
 <img src="./images/sound-sensor.gif" width="300" height="600">
 
 ### FastLED
