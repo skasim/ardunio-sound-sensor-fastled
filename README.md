@@ -17,7 +17,7 @@ Samra Kasim
 ## Sound Sensor
 The sounds sensor's potentiometer controls the sensor's sensitivity to the sound. The potentiometer requires calibration prior to use. 
 
-## FFT
+## Fast Fourier Transformation (FFT)
 The FFT algorithm is considered one of the most important algorithms developed in the last century and has wide ranging uses, including signal processing and sound compression. The [FFT takes a tangle of sine waves](https://www.youtube.com/watch?v=zKKGA30bHG0) that are a time domain representation of a signal and converts it to a frequency domain representation. Therefore, FFT can be used to [deconstruct audio waves into different frequencies such as bass and treble or deconstruct earthquake vibrations](https://download.ni.com/evaluation/pxi/Understanding%20FFTs%20and%20Windowing.pdf).
 
 <img src="./images/square_wave.gif">
